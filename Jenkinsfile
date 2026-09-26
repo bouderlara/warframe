@@ -31,6 +31,13 @@ pipeline {
                 }
             }
         }
+        stage('Package') {
+            steps {
+                dir('frontend') {
+                    archiveArtifacts artifacts: 'dist/**', fingerprint: true
+                }
+            }
+        }
     }
     post {
         success {
